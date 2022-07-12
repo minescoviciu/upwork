@@ -1,0 +1,3 @@
+[remtote_host]
+
+local ansible_host=127.0.0.1

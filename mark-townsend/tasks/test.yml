@@ -1,0 +1,19 @@
+---
+- name: Create cstor disk pool
+  hosts: local
+  gather_facts: no
+
+  tasks:
+    - name: Get kubctl-info
+      shell:
+        executable: bash
+        cmd: cat /home/minescoviciu/upwork/mark-townsend/example-out.txt | tr -s " "
+      register: kub_services
+
+    - name: Copy template
+      template:
+        src: templates/bd.jinja2
+        dest: /home/minescoviciu/upwork/mark-townsend/test.yml
+        mode: 0664
+
+

@@ -1,0 +1,28 @@
+apiVersion: cstor.openebs.io/v1
+kind: CStorPoolCluster
+metadata:
+  name: cstor-disk-pool
+namespace: openebs
+spec:
+  pools:
+    - nodeSelector:
+        kubernetes.io/hostname: "k3s1"
+      dataRaidGroups:
+      - blockDevices:
+        - blockDeviceName: "blockdevice-27610399a1813e40c04e80327623e1ff"
+      poolConfig:
+        dataRaidGroupType: "stripe"
+    - nodeSelector:
+        kubernetes.io/hostname: "k3s2"
+      dataRaidGroups:
+      - blockDevices:
+        - blockDeviceName: "blockdevice-7675235a5951a7512ac819ca552237a3"
+      poolConfig:
+        dataRaidGroupType: "stripe"
+    - nodeSelector:
+        kubernetes.io/hostname: "k3s0"
+      dataRaidGroups:
+      - blockDevices:
+        - blockDeviceName: "blockdevice-ee16c95cba1ea2632e69c0479a80c575"
+      poolConfig:
+        dataRaidGroupType: "stripe"

@@ -1,0 +1,4 @@
+NAMESPACE   NAME                                           NODENAME   SIZE          CLAIMSTATE   STATUS   AGE
+openebs     blockdevice-27610399a1813e40c04e80327623e1ff   k3s1       21474836480   Claimed      Active   50m
+openebs     blockdevice-7675235a5951a7512ac819ca552237a3   k3s2       21474836480   Claimed      Active   50m
+openebs     blockdevice-ee16c95cba1ea2632e69c0479a80c575   k3s0       21474836480   Claimed      Active   46m

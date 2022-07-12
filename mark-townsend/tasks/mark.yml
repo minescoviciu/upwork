@@ -1,0 +1,23 @@
+---
+- name: Create cstor disk pool
+  hosts: remote_host
+  gather_facts: no
+
+  tasks:
+    - name: Get kubctl-info
+      shell:
+        executable: bash
+        cmd: kubectl get bd -A | tr -s " "
+      register: kub_services
+
+    - name: Copy template
+      template:
+        src: templates/bd.jinja2
+        dest: dst_file
+        mode: 0664
+
+    - name: Apply config
+      shell:
+        executable: bash
+        cmd: kubectl apply -y {{ dst_file }}
+

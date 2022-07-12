@@ -1,0 +1,16 @@
+apiVersion: cstor.openebs.io/v1
+kind: CStorPoolCluster
+metadata:
+  name: cstor-disk-pool
+namespace: openebs
+spec:
+  pools:
+{% for service in  kub_services['stdout'].split('\n')[1:] %}
+    - nodeSelector:
+        kubernetes.io/hostname: "{{ service.split(' ')[2] }}"
+      dataRaidGroups:
+      - blockDevices:
+        - blockDeviceName: "{{ service.split(' ')[1] }}"
+      poolConfig:
+        dataRaidGroupType: "stripe"
+{% endfor %}
